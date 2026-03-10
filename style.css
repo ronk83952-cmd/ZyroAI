@@ -1,53 +1,25 @@
-/* Base Styles */
-body.dark-mode {
-    background-color: #212121;
-    color: white;
-}
-
-/* Light Mode Overrides */
-body.light-mode {
-    background-color: #ffffff;
-    color: #171717;
-}
-
-body.light-mode #main-chat {
-    background-color: #ffffff;
-}
-
-body.light-mode aside {
-    background-color: #f9f9f9;
-    color: #171717;
-    border-right: 1px solid #e5e5e5;
-}
-
-body.light-mode .bg-\[\#2f2f2f\] {
-    background-color: #f4f4f4;
-    border: 1px solid #e5e5e5;
-    color: black;
-}
-
-body.light-mode #user-input {
-    color: black;
-}
-
 /* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 6px;
-}
-::-webkit-scrollbar-thumb {
-    background: #424242;
-    border-radius: 10px;
-}
-body.light-mode ::-webkit-scrollbar-thumb {
-    background: #d1d1d1;
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #444; }
+
+/* Light Mode Vars */
+body.light-theme {
+    background-color: #f7f7f8;
+    color: #171717;
 }
 
-/* Animation */
-.message-fade {
-    animation: fadeIn 0.3s ease-in;
-}
+body.light-theme #main-bg { background-color: #ffffff; }
+body.light-theme aside { background-color: #f9f9f9; border-color: #e5e5e5; color: #171717; }
+body.light-theme #input-container { background-color: #ffffff; border-color: #e5e5e5; }
+body.light-theme #user-input { color: #171717; }
+body.light-theme #send-btn { background-color: #171717; color: white; }
+body.light-theme .bg-white\/5 { background-color: #f1f1f1; border-color: #e5e5e5; }
 
-@keyframes fadeIn {
+/* Animations */
+@keyframes slideIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+.message-anim { animation: slideIn 0.3s ease-out forwards; }
