@@ -1,6 +1,6 @@
 // 1. INITIALIZE TOOLS
 lucide.createIcons();
-const supabase = supabase.createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_KEY');
+const supabase = supabase.createClient('https://bxqcvcyzjtkajttzokax.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4cWN2Y3l6anRrYWp0dHpva2F4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNjE4NTYsImV4cCI6MjA4ODYzNzg1Nn0.kZ84SbD0dMQwCGqqR77JH_T68cVMWgrD5m2VX3WNrTE');
 
 const chatWindow = document.getElementById('chat-window');
 const userInput = document.getElementById('user-input');
@@ -81,4 +81,5 @@ function toggleModal() {
 
 // Event Listeners
 sendBtn.addEventListener('click', sendMessage);
+
 userInput.addEventListener('keydown', (e) => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }});
