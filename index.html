@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZyroAI - Modern AI Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="dark-mode transition-colors duration-300">
+
+    <div class="flex h-screen overflow-hidden">
+        <aside class="w-64 bg-[#171717] flex flex-col border-r border-white/10 text-white p-4">
+            <button id="new-chat" class="flex items-center gap-2 border border-white/20 p-2 rounded-lg hover:bg-white/10 mb-6 transition">
+                <i data-lucide="plus" class="w-4 h-4"></i> New Chat
+            </button>
+
+            <div class="flex-1 overflow-y-auto" id="sidebar-content">
+                <div class="text-xs text-gray-500 font-bold uppercase mb-2">Projects</div>
+                <div id="project-list" class="space-y-1">
+                    </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-4 space-y-2" id="auth-section">
+                <button onclick="handleAuth()" class="flex items-center gap-3 w-full p-2 hover:bg-white/10 rounded">
+                    <i data-lucide="log-in" class="w-5 h-5"></i> <span>Login / Sign Up</span>
+                </button>
+                <button id="theme-toggle" class="flex items-center gap-3 w-full p-2 hover:bg-white/10 rounded">
+                    <i data-lucide="sun" class="w-5 h-5"></i> <span>Switch Theme</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col bg-[#212121] text-white relative" id="main-chat">
+            <header class="p-4 flex justify-between items-center border-b border-white/10">
+                <div class="flex items-center gap-2">
+                    <select id="model-select" class="bg-transparent font-bold outline-none cursor-pointer text-lg">
+                        <option value="gpt-4o">GPT-4o</option>
+                        <option value="claude-3-5">Claude 3.5</option>
+                        <option value="gemini-pro">Gemini Pro</option>
+                    </select>
+                </div>
+            </header>
+
+            <div id="chat-window" class="flex-1 overflow-y-auto p-4 space-y-6 max-w-3xl mx-auto w-full">
+                <div class="flex h-full items-center justify-center text-gray-500">
+                    <p>Start a conversation with ZyroAI</p>
+                </div>
+            </div>
+
+            <div class="p-4 max-w-3xl mx-auto w-full">
+                <div class="bg-[#2f2f2f] rounded-2xl border border-white/10 p-2 shadow-2xl">
+                    <div class="flex items-center">
+                        <label for="file-upload" class="p-2 text-gray-400 hover:text-white cursor-pointer">
+                            <i data-lucide="paperclip" class="w-5 h-5"></i>
+                            <input type="file" id="file-upload" class="hidden">
+                        </label>
+                        <textarea id="user-input" rows="1" placeholder="Ask ZyroAI anything..." class="flex-1 bg-transparent border-none outline-none p-2 resize-none text-white"></textarea>
+                        <button id="send-btn" class="bg-white text-black p-2 rounded-xl hover:bg-gray-200 transition">
+                            <i data-lucide="arrow-up" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+                <p class="text-[10px] text-center text-gray-500 mt-2">ZyroAI is powered by external APIs.</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="profile-modal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center p-4">
+        <div class="bg-[#212121] border border-white/10 p-6 rounded-2xl w-full max-w-md">
+            <h2 class="text-xl font-bold mb-4">Your Profile</h2>
+            <div class="space-y-4">
+                <input type="text" id="prof-name" placeholder="Name" class="w-full bg-[#2f2f2f] border border-white/10 p-2 rounded">
+                <input type="number" id="prof-age" placeholder="Age" class="w-full bg-[#2f2f2f] border border-white/10 p-2 rounded">
+                <input type="text" id="prof-job" placeholder="Occupation" class="w-full bg-[#2f2f2f] border border-white/10 p-2 rounded">
+                <textarea id="prof-instructions" placeholder="Custom Instructions (e.g. Talk like a dev)" class="w-full bg-[#2f2f2f] border border-white/10 p-2 rounded h-24"></textarea>
+                <div class="flex gap-2">
+                    <button onclick="saveProfile()" class="flex-1 bg-white text-black font-bold p-2 rounded">Save</button>
+                    <button onclick="toggleModal()" class="flex-1 bg-red-500 text-white font-bold p-2 rounded">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+/* Base Styles */
+body.dark-mode {
+    background-color: #212121;
+    color: white;
+}
+
+/* Light Mode Overrides */
+body.light-mode {
+    background-color: #ffffff;
+    color: #171717;
+}
+
+body.light-mode #main-chat {
+    background-color: #ffffff;
+}
+
+body.light-mode aside {
+    background-color: #f9f9f9;
+    color: #171717;
+    border-right: 1px solid #e5e5e5;
+}
+
+body.light-mode .bg-\[\#2f2f2f\] {
+    background-color: #f4f4f4;
+    border: 1px solid #e5e5e5;
+    color: black;
+}
+
+body.light-mode #user-input {
+    color: black;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background: #424242;
+    border-radius: 10px;
+}
+body.light-mode ::-webkit-scrollbar-thumb {
+    background: #d1d1d1;
+}
+
+/* Animation */
+.message-fade {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
